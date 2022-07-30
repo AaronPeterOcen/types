@@ -1,24 +1,17 @@
-function combine(
-  input1: number | string,
-  input2: number | string,
-  resultConversion: string
-) {
-  let result;
-  if (typeof input1 === "number" && typeof input2 === "number") {
-    result = input1 + input2;
-  } else {
-    result = input1.toString() + input2.toString();
-  }
-  if (resultConversion === "number") {
-    return +result;
-  } else {
-    return result.toString();
-  }
-  return result;
+//unknown error
+let userInput: unknown;
+let userName: string;
+
+userInput = 4;
+userInput = "ocen";
+if (typeof userInput === "string") {
+  userName = userInput;
 }
 
-const combinedAges = combine(30, 25, "number");
-console.log(combinedAges);
+//never type
+function generateError(message: string, code: number): never {
+  throw { message: message, errorCode: code };
+}
 
-const combinedNames = combine("ocen", "aaron", "text");
-console.log(combinedNames);
+const result = generateError("An error occurred!", 600);
+console.log(result);
